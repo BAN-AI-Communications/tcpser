@@ -1,11 +1,11 @@
 ## Application
 
-TCPSER turns a PC serial port into an emulated Hayes compatible modem that
-uses TCP/IP for incoming and outgoing connections. It can be used to allow
-older applications and systems designed for modem use to operate on the
-Internet. TCPSER supports all standard Hayes commands, and understands
-extended and vendor proprietary commands (though it does not implement
-many of them). TCPSER can be used for both inbound and outbound connections.
+TCPSER turns a PC serial port into an emulated Hayes compatible modem that uses
+TCP/IP for incoming and outgoing connections. It can be used to allow older
+applications and systems designed for modem use to operate on the Internet.
+TCPSER supports all standard Hayes commands, and understands extended and vendor
+proprietary commands (though it does not implement many of them). TCPSER can be
+used for both inbound and outbound connections.
 
 ## License
 
@@ -24,7 +24,8 @@ brew install tcpser
 
 ## Executable/Building
 
-Simply clone the repository and use the appropriate make command to generate the executable. If unsure, try the default make command first.
+Simply clone the repository and use the appropriate make command to generate the
+executable. If unsure, try the default make command first.
 
 | OS                  | Command                    |
 | ------------------- | -------------------------- |
@@ -58,17 +59,16 @@ tcpser -v <port> -s <speed> -l <log_level> -t <tracing options> ...
 tcpser -d /dev/ttyS0 -s 38400 -l 7 -tsSiI -i "s0=1" -p 6400
 ```
 
-Will start tcpser on ttyS0 at 38400 bps, level 7 logging, tracing of
-inbound serial, outbound serial, inbound IP, outbound IP, init
-modem to answer after 1 ring, and listen for incoming connections on port
-6400
+Will start tcpser on ttyS0 at 38400 bps, level 7 logging, tracing of inbound
+serial, outbound serial, inbound IP, outbound IP, init modem to answer after 1
+ring, and listen for incoming connections on port 6400
 
 ```
 tcpser -v 25232 -s 38400 -l 4 -p 23
 ```
 
-Will set up an ip232 port at 25232, report 38400 bps connections,
-level 4 logging, and listen for incoming connections on port 23.
+Will set up an ip232 port at 25232, report 38400 bps connections, level 4
+logging, and listen for incoming connections on port 23.
 
 tcpser -h will provide additional information
 
@@ -85,17 +85,16 @@ tcpser can be configured to send the contents of a file upon:
 For connect and answer, there are separate options for sending a file to the
 local serial connection (-c, -a) and the remote IP connection (-C, -A).
 
-If tcpser connects to a telnet service, it will negotiate the connection
-using the telnet protocol. If telnet is detected, then tcpser will support
-RFC 856 (Telnet Binary Transmission), so that 8-bit file transfers will
-work correctly.
+If tcpser connects to a telnet service, it will negotiate the connection using
+the telnet protocol. If telnet is detected, then tcpser will support RFC 856
+(Telnet Binary Transmission), so that 8-bit file transfers will work correctly.
 
 tcpser can be configured to support multiple serial/ip232 ports on one TCP/IP
 port. Simply repeat the -s and -d/-v parameters on the command line for each
 serial/ip232 port to be configured. Options s,S,a,A,c,C,I, and T will
-"propagate" to subsequent connections, unless they are redefined. Defaults
-for s and S are 38400. This configuration enables the operation of a
-multi-line BBS on one TCP/IP port.
+"propagate" to subsequent connections, unless they are redefined. Defaults for s
+and S are 38400. This configuration enables the operation of a multi-line BBS on
+one TCP/IP port.
 
 Frequently used addresses can be configured in the "phonebook", like so:
 
@@ -120,9 +119,8 @@ At this point, phonebook support is very alpha, so use with care.
 
 ## Emulation
 
-All of the standard Hayes commands should behave as expected. Some of
-of the proprietary commands are not implemented, but should not cause
-errors.
+All of the standard Hayes commands should behave as expected. Some of of the
+proprietary commands are not implemented, but should not cause errors.
 
 Examples:
 
@@ -150,16 +148,16 @@ transmissions.i
 
 ## Cable
 
-tcpser can be used with a regular null modem cable, but it utilizes the DTR
-line on the PC serial port to reflect the state of the DCD line as seen by the
-target system. On a normal null-modem cable, DTR is mapped to DCD/DSR, which
-implies DSR will also reflect the state of DCD on the target machine. However,
-some systems (notably those utilizing the 6551 ACIA communication IC) will not
+tcpser can be used with a regular null modem cable, but it utilizes the DTR line
+on the PC serial port to reflect the state of the DCD line as seen by the target
+system. On a normal null-modem cable, DTR is mapped to DCD/DSR, which implies
+DSR will also reflect the state of DCD on the target machine. However, some
+systems (notably those utilizing the 6551 ACIA communication IC) will not
 transmit unless DSR is held high. In this case, a quick qorkaround is to force
 DCD to be held high by adding -i"&c0" to the tcpser parameter list. However,
-this also prevents normal operation of the DCD line, which is needed by some
-BBS systems. A more permanent solution is to construct a modified null-modem
-cable or modify an existing cable to the following specifications:
+this also prevents normal operation of the DCD line, which is needed by some BBS
+systems. A more permanent solution is to construct a modified null-modem cable
+or modify an existing cable to the following specifications:
 
     PC      Target
 
@@ -180,8 +178,8 @@ This differs from a regular null-modem cable in that the target machine has DSR
 looped to DTR, not to DCD. Note that this cable is directional.
 
 Normally, the target machine will configure DSR to float to a high state if
-unconnected. As well, PCs do not require a valid DSR line for operation. Thus,
-a simpler cable can be constructed that is bi-directional:
+unconnected. As well, PCs do not require a valid DSR line for operation. Thus, a
+simpler cable can be constructed that is bi-directional:
 
     CTS-----RTS
     RTS-----CTS
@@ -204,8 +202,8 @@ Any other configuration will not work correctly.
 
 ## Platform notes
 
-Win32 users should use /dev/ttyS0-3 for COM1-4. At present, using "com1:"
-does not operate correctly.
+Win32 users should use /dev/ttyS0-3 for COM1-4. At present, using "com1:" does
+not operate correctly.
 
 Raymond Day sends the following Ubuntu 7.10 autorun scripts:
 
@@ -240,12 +238,12 @@ the author.
 
 ---
 
-Jim Brain
-tcpser@jbrain.com
-www.jbrain.com
+Jim Brain tcpser@jbrain.com www.jbrain.com
 
 Thanks:
 
 - The ip232 support was added by Anthony Tolle.
-- Telnet support fixes were added by Gene Buckle (geneb): https://github.com/geneb/tcpser
-- Automatic modem parity detection and numerous fixes were added by Chris Osborn (fozztexx): https://github.com/FozzTexx/tcpser
+- Telnet support fixes were added by Gene Buckle (geneb):
+  https://github.com/geneb/tcpser
+- Automatic modem parity detection and numerous fixes were added by Chris Osborn
+  (fozztexx): https://github.com/FozzTexx/tcpser
