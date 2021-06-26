@@ -38,32 +38,32 @@ modem_response get_connect_response(int speed, int level) {
     return MDM_RESP_CONNECT;
   }
   switch (speed) {
-  case 921600:
-    return MDM_RESP_CONNECT_921600;
-  case 460800:
-    return MDM_RESP_CONNECT_460800;
-  case 230400:
-    return MDM_RESP_CONNECT_230400;
-  case 115200:
-    return MDM_RESP_CONNECT_115200;
-  case 57600:
-    return MDM_RESP_CONNECT_57600;
-  case 38400:
-    return MDM_RESP_CONNECT_38400;
-  case 19200:
-    return MDM_RESP_CONNECT_19200;
-  case 9600:
-    return MDM_RESP_CONNECT_9600;
-  case 4800:
-    return MDM_RESP_CONNECT_4800;
-  case 2400:
-    return MDM_RESP_CONNECT_2400;
-  case 1200:
-    return MDM_RESP_CONNECT_1200;
-  case 600:
-    return MDM_RESP_CONNECT_0600;
-  default:
-    return MDM_RESP_CONNECT;
+    case 921600:
+      return MDM_RESP_CONNECT_921600;
+    case 460800:
+      return MDM_RESP_CONNECT_460800;
+    case 230400:
+      return MDM_RESP_CONNECT_230400;
+    case 115200:
+      return MDM_RESP_CONNECT_115200;
+    case 57600:
+      return MDM_RESP_CONNECT_57600;
+    case 38400:
+      return MDM_RESP_CONNECT_38400;
+    case 19200:
+      return MDM_RESP_CONNECT_19200;
+    case 9600:
+      return MDM_RESP_CONNECT_9600;
+    case 4800:
+      return MDM_RESP_CONNECT_4800;
+    case 2400:
+      return MDM_RESP_CONNECT_2400;
+    case 1200:
+      return MDM_RESP_CONNECT_1200;
+    case 600:
+      return MDM_RESP_CONNECT_0600;
+    default:
+      return MDM_RESP_CONNECT;
   }
 }
 

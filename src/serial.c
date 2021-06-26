@@ -158,6 +158,7 @@ int ser_init_conn(char *tty, int speed) {
       tio.c_cflag = CS8 | CLOCAL | CREAD | CRTSCTS;
 #endif
       tio.c_iflag = IGNBRK;
+#endif
       tio.c_oflag = 0;
       tio.c_lflag = 0;
       cfsetispeed(&tio, bps_rate);
